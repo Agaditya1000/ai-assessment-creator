@@ -8,8 +8,8 @@ router.post('/create', async (req, res) => {
   console.log('API Request: POST /api/assignments/create', req.body);
   try {
     const {
-      title,
-      topic,
+      title = 'New Assignment',
+      topic = req.body.additionalInstructions || 'General Assessment',
       schoolName,
       subject,
       classLevel,

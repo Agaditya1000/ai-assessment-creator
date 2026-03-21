@@ -20,12 +20,6 @@ export default function CreateAssignment() {
 
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    title: '',
-    topic: '',
-    schoolName: '',
-    subject: '',
-    classLevel: '',
-    timeAllowed: '45 minutes',
     dueDate: '',
     additionalInstructions: '',
   });
@@ -61,7 +55,8 @@ export default function CreateAssignment() {
       numQuestions: totalQuestions,
       totalMarks: totalMarks,
       questionTypes: questionTypes.map(q => q.type),
-      // In a real app, you'd send file info here
+      title: 'New Assignment', 
+      topic: formData.additionalInstructions || 'General Assessment',
     };
 
     try {
@@ -123,7 +118,7 @@ export default function CreateAssignment() {
           }}>
             <Upload size={40} color="#94a3b8" style={{ margin: '0 auto 1rem' }} />
             <h4 style={{ margin: '0 0 0.5rem', fontWeight: 'bold' }}>Choose a file or drag & drop it here</h4>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>JPEG, PNG, upto 10MB</p>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>PDF, TEXT, up to 10MB (Optional)</p>
             <button style={{
               padding: '0.5rem 1.5rem',
               backgroundColor: 'white',
@@ -134,86 +129,8 @@ export default function CreateAssignment() {
             }}>Browse Files</button>
           </div>
 
-          {/* Form Fields */}
+          {/* Form Fields - Only Due Date remains */}
           <div className="form-grid">
-            <div className="col-span-full">
-              <label style={{ fontSize: '0.9rem', fontWeight: '700', color: 'var(--text)', marginBottom: '0.5rem', display: 'block' }}>Assignment Title</label>
-              <input
-                type="text"
-                name="title"
-                placeholder="e.g. Midterm Science Quiz"
-                value={formData.title}
-                onChange={handleInputChange}
-                className="input-field"
-                style={{ backgroundColor: 'white' }}
-              />
-            </div>
-
-            <div className="col-span-full">
-              <label style={{ fontSize: '0.9rem', fontWeight: '700', color: 'var(--text)', marginBottom: '0.5rem', display: 'block' }}>School Name</label>
-              <input
-                type="text"
-                name="schoolName"
-                placeholder="e.g. Delhi Public School"
-                value={formData.schoolName}
-                onChange={handleInputChange}
-                className="input-field"
-                style={{ backgroundColor: 'white' }}
-              />
-            </div>
-
-            <div>
-              <label style={{ fontSize: '0.9rem', fontWeight: '700', color: 'var(--text)', marginBottom: '0.5rem', display: 'block' }}>Subject</label>
-              <input
-                type="text"
-                name="subject"
-                placeholder="e.g. Science"
-                value={formData.subject}
-                onChange={handleInputChange}
-                className="input-field"
-                style={{ backgroundColor: 'white' }}
-              />
-            </div>
-
-            <div>
-              <label style={{ fontSize: '0.9rem', fontWeight: '700', color: 'var(--text)', marginBottom: '0.5rem', display: 'block' }}>Class Level</label>
-              <input
-                type="text"
-                name="classLevel"
-                placeholder="e.g. 10th Grade"
-                value={formData.classLevel}
-                onChange={handleInputChange}
-                className="input-field"
-                style={{ backgroundColor: 'white' }}
-              />
-            </div>
-
-            <div className="col-span-full">
-              <label style={{ fontSize: '0.9rem', fontWeight: '700', color: 'var(--text)', marginBottom: '0.5rem', display: 'block' }}>Time Allowed</label>
-              <input
-                type="text"
-                name="timeAllowed"
-                placeholder="e.g. 45 minutes"
-                value={formData.timeAllowed}
-                onChange={handleInputChange}
-                className="input-field"
-                style={{ backgroundColor: 'white' }}
-              />
-            </div>
-
-            <div className="col-span-full">
-              <label style={{ fontSize: '0.9rem', fontWeight: '700', color: 'var(--text)', marginBottom: '0.5rem', display: 'block' }}>Topic</label>
-              <input
-                type="text"
-                name="topic"
-                placeholder="e.g. Photosynthesis"
-                value={formData.topic}
-                onChange={handleInputChange}
-                className="input-field"
-                style={{ backgroundColor: 'white' }}
-              />
-            </div>
-
             <div className="col-span-full">
               <label style={{ fontSize: '0.9rem', fontWeight: '700', color: 'var(--text)', marginBottom: '0.5rem', display: 'block' }}>Due Date</label>
               <input

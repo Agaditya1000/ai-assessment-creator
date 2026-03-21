@@ -49,7 +49,7 @@ const SectionSchema = new Schema<ISection>({
 const AssignmentSchema = new Schema<IAssignment>(
   {
     title: { type: String, required: true },
-    topic: { type: String, required: true },
+    topic: { type: String }, // Made optional for simplified form
     schoolName: { type: String },
     subject: { type: String },
     classLevel: { type: String },
