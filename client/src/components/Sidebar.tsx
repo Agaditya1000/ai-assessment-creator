@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
-import { Home, Users, FileText, Wrench, Book, Settings, Plus, X, Sparkles } from 'lucide-react';
+import { Home, Users, FileText, Wrench, FilePlus2, Settings, Plus, X, Sparkles } from 'lucide-react';
 import { useEffect } from 'react';
 import { useAssignmentStore } from '@/store/useAssignmentStore';
 import { useUIStore } from '@/store/useUIStore';
@@ -13,7 +13,7 @@ const navItems = [
   { name: 'My Groups', icon: Users, href: '/groups' },
   { name: 'Assignments', icon: FileText, href: '/?tab=assignments', badge: 0 },
   { name: 'AI Teacher\'s Toolkit', icon: Wrench, href: '/toolkit' },
-  { name: 'My Library', icon: Book, href: '/?tab=library' },
+  { name: 'My Library', icon: FilePlus2, href: '/?tab=library' },
 ];
 
 export default function Sidebar() {
@@ -95,22 +95,42 @@ function SidebarContent() {
           marginBottom: '2rem',
           paddingLeft: isSidebarCollapsed ? '0.35rem' : '0'
         }}>
-          <div style={{ 
-            width: '40px', 
-            height: '40px', 
-            background: 'var(--logo-bg)', 
-            borderRadius: '12px', 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            color: 'white', 
-            fontWeight: '900', 
-            fontSize: '1.2rem',
-            flexShrink: 0
-          }}>V</div>
-          {!isSidebarCollapsed && (
-            <span style={{ fontWeight: '800', fontSize: '1.25rem', color: '#111827' }}>VedaAI</span>
-          )}
+          {/* Mobile Logo: Stylized "V" */}
+          <div className="mobile-only" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <div style={{ 
+              width: '40px', 
+              height: '40px', 
+              background: 'var(--logo-bg)', 
+              borderRadius: '12px', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center', 
+              color: 'white', 
+              fontWeight: '900', 
+              fontSize: '1.2rem',
+              flexShrink: 0
+            }}>V</div>
+            {!isSidebarCollapsed && (
+              <span style={{ fontWeight: '800', fontSize: '1.25rem', color: '#111827' }}>VedaAI</span>
+            )}
+          </div>
+
+          {/* Desktop Logo: Image from src/images/desktop logo.jpeg */}
+          <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', width: '100%' }}>
+            <img 
+              src="/desktop-logo.jpeg" 
+              alt="VedaAI" 
+              style={{ 
+                width: isSidebarCollapsed ? '40px' : '40px', 
+                height: isSidebarCollapsed ? '40px' : '40px', 
+                objectFit: 'contain',
+                flexShrink: 0
+              }} 
+            />
+            {!isSidebarCollapsed && (
+              <span style={{ fontWeight: '800', fontSize: '1.25rem', color: '#111827', whiteSpace: 'nowrap' }}>VedaAI</span>
+            )}
+          </div>
         </div>
 
       {/* Action Button */}
@@ -236,8 +256,8 @@ function SidebarContent() {
           </div>
           {!isSidebarCollapsed && (
             <div style={{ flex: 1, minWidth: 0 }}>
-              <p style={{ margin: 0, fontWeight: '700', fontSize: '0.85rem', color: '#111827', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Delhi Public School</p>
-              <p style={{ margin: 0, fontSize: '0.7rem', color: '#6B7280', fontWeight: '500' }}>Bokaro Steel City</p>
+              <p style={{ margin: 0, fontWeight: '700', fontSize: '0.85rem', color: '#111827', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>John Doe</p>
+              <p style={{ margin: 0, fontSize: '0.7rem', color: '#6B7280', fontWeight: '500' }}>Admin Profile</p>
             </div>
           )}
         </div>

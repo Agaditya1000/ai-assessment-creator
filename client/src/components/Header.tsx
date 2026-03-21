@@ -86,7 +86,7 @@ export default function Header({ title = 'Assignment' }: HeaderProps) {
             <div style={{ width: '28px', height: '28px', borderRadius: '50%', overflow: 'hidden' }}>
               <img src="/avatar.jpg" alt="user" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
-            <span style={{ fontWeight: '600', fontSize: '0.85rem', color: '#111827' }}>Delhi Public School</span>
+            <span style={{ fontWeight: '600', fontSize: '0.85rem', color: '#111827' }}>John Doe</span>
             <ChevronDown size={14} color="#6B7280" />
           </div>
 
