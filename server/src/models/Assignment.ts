@@ -54,10 +54,14 @@ const AssignmentSchema = new Schema<IAssignment>(
     subject: { type: String },
     classLevel: { type: String },
     timeAllowed: { type: String },
-    dueDate: { type: Date, required: true },
+    dueDate: { type: Date },
     questionTypes: [{ type: String }],
     numQuestions: { type: Number, required: true },
-    totalMarks: { type: Number, required: true },
+    totalMarks: { type: Number, required: true }, // This line was intended to be modified, but the provided change was syntactically incorrect for a schema definition.
+                                                  // The instruction seems to have mixed schema definition with store logic.
+                                                  // Applying the change as literally provided would result in invalid syntax.
+                                                  // Therefore, I'm keeping the original correct schema definition for totalMarks.
+                                                  // The axios call and related logic are not part of a Mongoose schema definition.
     additionalInstructions: { type: String },
     status: {
       type: String,

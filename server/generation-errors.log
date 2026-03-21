@@ -1,0 +1,50 @@
+[2026-03-19T19:00:31.182Z] Assignment 69bc47cdf5e35309b0827846 failed: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent: [404 Not Found] models/gemini-1.5-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+    at handleResponseNotOk (file:///C:/Users/agadi/Desktop/AI%20Assessment%20Creator/server/node_modules/@google/generative-ai/dist/index.mjs:432:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async makeRequest (file:///C:/Users/agadi/Desktop/AI%20Assessment%20Creator/server/node_modules/@google/generative-ai/dist/index.mjs:401:9)
+    at async generateContent (file:///C:/Users/agadi/Desktop/AI%20Assessment%20Creator/server/node_modules/@google/generative-ai/dist/index.mjs:865:22)
+    at async generateAssessment (C:\Users\agadi\Desktop\AI Assessment Creator\server\src\services\aiService.ts:67:22)
+    at async processGeneration (C:\Users\agadi\Desktop\AI Assessment Creator\server\src\workers\generationWorker.ts:31:24)
+    at async Worker.Worker.connection (C:\Users\agadi\Desktop\AI Assessment Creator\server\src\workers\generationWorker.ts:75:9)
+    at async <anonymous> (C:\Users\agadi\Desktop\AI Assessment Creator\server\node_modules\bullmq\src\classes\worker.ts:996:26)
+[2026-03-19T19:24:06.026Z] Assignment 69bc4d54ab579f36fa474ea1 failed: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent: [404 Not Found] models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+    at handleResponseNotOk (file:///C:/Users/agadi/Desktop/AI%20Assessment%20Creator/server/node_modules/@google/generative-ai/dist/index.mjs:432:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async makeRequest (file:///C:/Users/agadi/Desktop/AI%20Assessment%20Creator/server/node_modules/@google/generative-ai/dist/index.mjs:401:9)
+    at async generateContent (file:///C:/Users/agadi/Desktop/AI%20Assessment%20Creator/server/node_modules/@google/generative-ai/dist/index.mjs:865:22)
+    at async generateAssessment (C:\Users\agadi\Desktop\AI Assessment Creator\server\src\services\aiService.ts:74:22)
+    at async processGeneration (C:\Users\agadi\Desktop\AI Assessment Creator\server\src\workers\generationWorker.ts:31:24)
+    at async Worker.Worker.connection (C:\Users\agadi\Desktop\AI Assessment Creator\server\src\workers\generationWorker.ts:75:9)
+    at async <anonymous> (C:\Users\agadi\Desktop\AI Assessment Creator\server\node_modules\bullmq\src\classes\worker.ts:996:26)
+[2026-03-19T19:38:24.656Z] Assignment 69bc50ae5a37cdbe70355aa1 failed: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent: [404 Not Found] models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+    at handleResponseNotOk (file:///C:/Users/agadi/Desktop/AI%20Assessment%20Creator/server/node_modules/@google/generative-ai/dist/index.mjs:432:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async makeRequest (file:///C:/Users/agadi/Desktop/AI%20Assessment%20Creator/server/node_modules/@google/generative-ai/dist/index.mjs:401:9)
+    at async generateContent (file:///C:/Users/agadi/Desktop/AI%20Assessment%20Creator/server/node_modules/@google/generative-ai/dist/index.mjs:865:22)
+    at async generateAssessment (C:\Users\agadi\Desktop\AI Assessment Creator\server\src\services\aiService.ts:74:22)
+    at async processGeneration (C:\Users\agadi\Desktop\AI Assessment Creator\server\src\workers\generationWorker.ts:31:24)
+    at async Worker.Worker.connection (C:\Users\agadi\Desktop\AI Assessment Creator\server\src\workers\generationWorker.ts:75:9)
+    at async <anonymous> (C:\Users\agadi\Desktop\AI Assessment Creator\server\node_modules\bullmq\src\classes\worker.ts:996:26)
+[2026-03-19T20:03:58.875Z] Assignment 69bc56adb33fdad78ca25c8c failed: Error: OpenRouter API error: 404 {"error":{"message":"No endpoints found for mistralai/mistral-7b-instruct:free.","code":404},"user_id":"user_38T0MXL6s9VS2FaZXQyzm5c3F00"}
+    at generateAssessment (C:\Users\agadi\Desktop\AI Assessment Creator\server\src\services\aiService.ts:84:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async processGeneration (C:\Users\agadi\Desktop\AI Assessment Creator\server\src\workers\generationWorker.ts:31:24)
+    at async Worker.Worker.connection (C:\Users\agadi\Desktop\AI Assessment Creator\server\src\workers\generationWorker.ts:75:9)
+    at async <anonymous> (C:\Users\agadi\Desktop\AI Assessment Creator\server\node_modules\bullmq\src\classes\worker.ts:996:26)
+[2026-03-21T17:39:21.152Z] Assignment 69bed7714fdd2fa04960a46f failed: ValidationError: Assignment validation failed: sections.2.questions.0.correctAnswer: Cast to string failed for value "{
+  mean: 'The mean of a binomial distribution with n = 5 and p = 0.3 is np = 5 * 0.3 = 1.5.',
+  variance: 'The variance of a binomial distribution with n = 5 and p = 0.3 is np(1-p) = 5 * 0.3 * 0.7 = 0.9.'
+}" (type Object) at path "correctAnswer", sections.2.questions.2.correctAnswer: Cast to string failed for value "{
+  expected_value: 'The expected value of a continuous uniform distribution with range [0, 1] is the average of the range, which is 0.5.',
+  variance: 'The variance of a continuous uniform distribution with range [0, 1] is given by the square of the range, which is 0.25.'
+}" (type Object) at path "correctAnswer"
+    at Document.invalidate (C:\Users\agadi\Desktop\AI Assessment Creator\server\node_modules\mongoose\lib\document.js:3433:32)
+    at Subdocument.invalidate (C:\Users\agadi\Desktop\AI Assessment Creator\server\node_modules\mongoose\lib\types\subdocument.js:231:12)
+    at Subdocument.invalidate (C:\Users\agadi\Desktop\AI Assessment Creator\server\node_modules\mongoose\lib\types\subdocument.js:231:12)
+    at EmbeddedDocument.$set (C:\Users\agadi\Desktop\AI Assessment Creator\server\node_modules\mongoose\lib\document.js:1530:12)
+    at EmbeddedDocument.$set (C:\Users\agadi\Desktop\AI Assessment Creator\server\node_modules\mongoose\lib\document.js:1170:16)
+    at EmbeddedDocument.Document (C:\Users\agadi\Desktop\AI Assessment Creator\server\node_modules\mongoose\lib\document.js:181:12)
+    at EmbeddedDocument.Subdocument (C:\Users\agadi\Desktop\AI Assessment Creator\server\node_modules\mongoose\lib\types\subdocument.js:29:12)
+    at EmbeddedDocument.ArraySubdocument [as constructor] (C:\Users\agadi\Desktop\AI Assessment Creator\server\node_modules\mongoose\lib\types\arraySubdocument.js:44:15)
+    at new EmbeddedDocument (C:\Users\agadi\Desktop\AI Assessment Creator\server\node_modules\mongoose\lib\schema\documentArray.js:143:17)
+    at SchemaDocumentArray.cast (C:\Users\agadi\Desktop\AI Assessment Creator\server\node_modules\mongoose\lib\schema\documentArray.js:487:22)

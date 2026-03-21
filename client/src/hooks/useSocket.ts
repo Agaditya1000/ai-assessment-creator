@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { io } from 'socket.io-client';
 import { useAssignmentStore } from '../store/useAssignmentStore';
 
-const SOCKET_URL = process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:5000';
+const SOCKET_URL = process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:5001';
 
 export const useSocket = () => {
   const updateAssignmentStatus = useAssignmentStore((state) => state.updateAssignmentStatus);

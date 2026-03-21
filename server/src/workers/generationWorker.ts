@@ -10,6 +10,8 @@ dotenv.config();
 const connectionConfig = {
   host: process.env.REDIS_HOST || 'localhost',
   port: parseInt(process.env.REDIS_PORT || '6379'),
+  password: process.env.REDIS_PASSWORD,
+  tls: process.env.REDIS_PASSWORD ? {} : undefined,
   maxRetriesPerRequest: 0,
   lazyConnect: true,
 };
@@ -43,8 +45,14 @@ export const processGeneration = async (assignmentId: string, io: Server) => {
       assignment,
     });
     console.log(`Assignment ${assignmentId} completed successfully`);
-  } catch (error) {
+  } catch (error: any) {
     console.error(`Assignment ${assignmentId} failed:`, error);
+    try {
+      const fs = await import('fs');
+      const logContent = `[${new Date().toISOString()}] Assignment ${assignmentId} failed: ${error.stack || error.message}\n`;
+      fs.appendFileSync('generation-errors.log', logContent);
+    } catch (fsErr) {}
+    
     await Assignment.findByIdAndUpdate(assignmentId, { status: 'failed' });
     io.emit('assignmentUpdate', { id: assignmentId, status: 'failed' });
     throw error;

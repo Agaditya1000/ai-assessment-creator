@@ -5,6 +5,7 @@ import { addGenerationJob } from '../queues/generationQueue.js';
 const router = Router();
 
 router.post('/create', async (req, res) => {
+  console.log('API Request: POST /api/assignments/create', req.body);
   try {
     const {
       title,
@@ -42,9 +43,13 @@ router.post('/create', async (req, res) => {
       message: 'Assignment created and job queued',
       assignmentId: assignment._id,
     });
-  } catch (error) {
-    console.error('Error creating assignment:', error);
-    res.status(500).json({ error: 'Failed to create assignment' });
+  } catch (error: any) {
+    console.error('Error creating assignment:', error.message);
+    if (error.errors) {
+      console.error('Validation Errors:', Object.keys(error.errors).map(k => `${k}: ${error.errors[k].message}`));
+    }
+    console.error('Request Body:', req.body);
+    res.status(500).json({ error: 'Failed to create assignment', details: error.message });
   }
 });
 
@@ -69,4 +74,18 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.delete('/:id', async (req, res) => {
+  try {
+    const assignment = await Assignment.findByIdAndDelete(req.params.id);
+    if (!assignment) {
+      return res.status(404).json({ error: 'Assignment not found' });
+    }
+    res.json({ message: 'Assignment deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to delete assignment' });
+  }
+});
+
 export default router;
+
+

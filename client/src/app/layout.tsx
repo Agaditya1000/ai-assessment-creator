@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
+import MobileNav from '@/components/MobileNav';
+import LayoutWrapper from '@/components/LayoutWrapper';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -10,8 +12,6 @@ export const metadata: Metadata = {
   title: 'VedaAI - AI Assessment Creator',
   description: 'Generate structured assessments with AI',
 };
-
-import MobileNav from '@/components/MobileNav';
 
 export default function RootLayout({
   children,
@@ -21,24 +21,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className} suppressHydrationWarning>
-        <div style={{ display: 'flex' }}>
-          <div className="desktop-only">
+        <LayoutWrapper>
+          <div style={{ display: 'flex' }}>
             <Sidebar />
-          </div>
-          <div className="main-content" style={{
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column'
-          }}>
-            <Header />
-            <main>
-              {children}
-            </main>
-          </div>
-          <div className="mobile-only">
+            <div className="main-content" style={{
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              width: '100%'
+            }}>
+              <Header />
+              <main>
+                {children}
+              </main>
+            </div>
             <MobileNav />
           </div>
-        </div>
+        </LayoutWrapper>
       </body>
     </html>
   );

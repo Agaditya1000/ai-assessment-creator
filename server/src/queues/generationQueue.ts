@@ -13,6 +13,8 @@ let queueInstance: Queue | null = null;
 const connectionConfig = {
   host: process.env.REDIS_HOST || 'localhost',
   port: parseInt(process.env.REDIS_PORT || '6379'),
+  password: process.env.REDIS_PASSWORD,
+  tls: process.env.REDIS_PASSWORD ? {} : undefined, // Enable TLS for cloud providers like Upstash
   maxRetriesPerRequest: 0, // Don't hang on failed requests
   lazyConnect: true,
 };

@@ -16,6 +16,7 @@ export default function CreateAssignment() {
   const router = useRouter();
   const createAssignment = useAssignmentStore((state) => state.createAssignment);
   const loading = useAssignmentStore((state) => state.loading);
+  const error = useAssignmentStore((state) => state.error);
 
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -88,6 +89,21 @@ export default function CreateAssignment() {
       <div className="glass-card" style={{ padding: '1.5rem', backgroundColor: 'white', borderRadius: '24px' }}>
         <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '0.5rem', color: 'var(--text)' }}>Create Assignment</h2>
         <p style={{ color: 'var(--text-muted)', marginBottom: '2.5rem' }}>Set up a new assignment for your students</p>
+
+        {error && (
+          <div style={{
+            backgroundColor: '#fee2e2',
+            color: '#b91c1c',
+            padding: '1rem',
+            borderRadius: '12px',
+            marginBottom: '2rem',
+            border: '1px solid #fecaca',
+            fontSize: '0.9rem',
+            fontWeight: '600'
+          }}>
+            ⚠️ {error}
+          </div>
+        )}
 
         <div style={{ display: 'grid', gap: '2rem' }}>
           {/* Assignment Details Header */}

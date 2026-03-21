@@ -46,7 +46,7 @@ mongoose
   })
   .catch((err) => {
     console.warn('MongoDB connection failed. Data features will be unavailable.');
-    // console.error(err);
+    console.error('MongoDB Error Details:', err.message);
   });
 
 server.listen(PORT, () => {
