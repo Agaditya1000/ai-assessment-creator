@@ -256,8 +256,8 @@ function SidebarContent() {
           </div>
           {!isSidebarCollapsed && (
             <div style={{ flex: 1, minWidth: 0 }}>
-              <p style={{ margin: 0, fontWeight: '700', fontSize: '0.85rem', color: '#111827', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>John Doe</p>
-              <p style={{ margin: 0, fontSize: '0.7rem', color: '#6B7280', fontWeight: '500' }}>Admin Profile</p>
+              <p style={{ margin: 0, fontWeight: '700', fontSize: '0.85rem', color: '#111827', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Delhi Public School</p>
+              <p style={{ margin: 0, fontSize: '0.7rem', color: '#6B7280', fontWeight: '500' }}>Bokaro Steel City</p>
             </div>
           )}
         </div>

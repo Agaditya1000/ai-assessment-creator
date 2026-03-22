@@ -50,13 +50,51 @@ export default function CreateAssignment() {
     const totalQuestions = questionTypes.reduce((sum, q) => sum + q.count, 0);
     const totalMarks = questionTypes.reduce((sum, q) => sum + q.count * q.marks, 0);
 
+    const extractMetadata = (text: string) => {
+      const trimmedText = text.trim();
+      if (!trimmedText) return { extractedTitle: 'New Assignment', extractedClass: 'N/A', extractedSubject: '' };
+
+      const lines = trimmedText.split('\n').filter(l => l.trim() !== '');
+      let extractedTitle = '';
+      let extractedClass = 'N/A';
+      let extractedSubject = '';
+
+      for (const line of lines) {
+        const titleMatch = line.match(/(?:Assignment|Title|Topic|Paper):\s*(.*)/i);
+        const classMatch = line.match(/(?:Class|Grade|Level|Standard):\s*(.*)/i);
+        const subjectMatch = line.match(/(?:Subject):\s*(.*)/i);
+
+        if (titleMatch?.[1]) extractedTitle = titleMatch[1].trim();
+        if (classMatch?.[1]) extractedClass = classMatch[1].trim();
+        if (subjectMatch?.[1]) extractedSubject = subjectMatch[1].trim();
+      }
+
+      // If no title found via keywords, take the first 50 chars of the first line
+      if (!extractedTitle && lines[0]) {
+        extractedTitle = lines[0].trim();
+        if (extractedTitle.length > 50) {
+          extractedTitle = extractedTitle.substring(0, 47) + '...';
+        }
+      }
+
+      return { 
+        extractedTitle: extractedTitle || 'New Assignment', 
+        extractedClass, 
+        extractedSubject 
+      };
+    };
+
+    const { extractedTitle, extractedClass, extractedSubject } = extractMetadata(formData.additionalInstructions);
+
     const payload = {
       ...formData,
       numQuestions: totalQuestions,
       totalMarks: totalMarks,
       questionTypes: questionTypes.map(q => q.type),
-      title: 'New Assignment', 
+      title: extractedTitle,
+      subject: extractedSubject || extractedTitle,
       topic: formData.additionalInstructions || 'General Assessment',
+      classLevel: extractedClass,
     };
 
     try {
