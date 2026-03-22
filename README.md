@@ -1,41 +1,47 @@
 # VedaAI – AI Assessment Creator
 
-VedaAI is a full-stack platform that allows teachers to generate structured, professional question papers using AI.
+VedaAI is a powerful full-stack platform designed for educators to instantly generate professional, structured question papers using advanced AI. Optimized for both speed and visual excellence, VedaAI streamlines the assessment creation process from prompt to PDF.
 
-## Features
-- **AI-Powered Generation**: Instantly create assessments based on topics and instructions.
-- **Structured Output**: Questions are organized into sections with difficulty levels and marks.
-- **Real-time Updates**: Track the AI generation progress via WebSockets.
-- **Premium Design**: Glassmorphic, dark-themed UI built with Next.js and Vanilla CSS.
-- **Background Processing**: Reliable generation using BullMQ and Redis.
+## 🚀 Key Features
 
-## Tech Stack
-- **Frontend**: Next.js 14 (App Router), TypeScript, Zustand, Socket.io-client, Framer Motion.
-- **Backend**: Node.js, Express, TypeScript, MongoDB (Mongoose), Redis, BullMQ, Socket.io.
-- **AI**: Google Gemini AI (1.5 Flash).
+- **Smart AI Generation**: Leveraging **OpenRouter AI** (Mistral 7B) to create high-quality assessments in seconds.
+- **Smart Metadata Extraction**: Automatically detects **Assignment Name**, **Subject**, and **Class Level** from your natural language instructions.
+- **Dynamic Question Types**: Supports Multiple Choice, Short Answer, Numerical Problems, and Diagram-based questions.
+- **Premium Mobile UI**: A fully responsive, "pill-style" mobile navigation and glassmorphic dashboard built for on-the-go productivity.
+- **Robust Background Jobs**: Reliable processing using **BullMQ** and **Redis** to handle high-concurrency generation tasks.
+- **Production Ready**: One-click PDF export and seamless deployment configurations for Render and Vercel.
 
-## Setup Instructions
+## 🛠️ Tech Stack
 
-### Prerequisites
-- Node.js (v18+)
-- MongoDB (Running locally or Atlas)
-- Redis (Running locally or via Docker)
+- **Frontend**: Next.js 14 (App Router), TypeScript, Zustand, Framer Motion, Lucide Icons.
+- **Backend**: Node.js, Express, MongoDB (Mongoose), Redis, BullMQ, Socket.io.
+- **AI Engine**: OpenRouter (Mistral 7B).
+- **Styling**: Vanilla CSS with modern HSL color palettes and glassmorphism.
 
-### Backend Setup
-1. Navigate to `server/`
-2. Run `npm install`
-3. Create a `.env` file based on `.env.example` and add your `GEMINI_API_KEY`.
-4. Run `npm run dev`
+## 📦 Deployment Guide
 
-### Frontend Setup
-1. Navigate to `client/`
-2. Run `npm install`
-3. Create a `.env` file based on `.env.example`.
-4. Run `npm run dev`
+### Backend (Render)
+1. **Connect Repository**: Link your GitHub repo to a new Render Web Service.
+2. **Build Settings**:
+   - Runtime: `Node`
+   - Build Command: `npm install && npm run build` (Ensure `tsc` generates `dist/`)
+   - Start Command: `node dist/index.js`
+3. **Environment Variables**:
+   - `MONGODB_URI`: Your Atlas connection string.
+   - `REDIS_URL`: Your Redis instance (Internal or External).
+   - `OPENROUTER_API_KEY`: Your OpenRouter key.
 
-## Architecture Overview
-- **API Request**: Frontend sends assessment parameters to the backend.
-- **Job Queue**: Backend creates a MongoDB record and adds a generation job to BullMQ.
-- **AI Processing**: A background worker picks up the job, calls Gemini API with a structured prompt, and parses the JSON response.
-- **Real-time Notify**: Upon completion, the worker updates the database and emits a WebSocket event to the frontend.
-- **Result UI**: Frontend receives the update and renders the structured question paper.
+### Frontend (Vercel)
+1. **Import Project**: Select the `client` directory as the root.
+2. **Environment Variables**:
+   - `NEXT_PUBLIC_API_URL`: Your Render backend URL + `/api`.
+   - `NEXT_PUBLIC_SOCKET_URL`: Your Render backend base URL.
+
+## 🛠️ Local Development
+
+1. **Clone the Repo**
+2. **Backend**: Navigate to `/server`, `npm install`, add `.env` (with `OPENROUTER_API_KEY`), and `npm run dev`.
+3. **Frontend**: Navigate to `/client`, `npm install`, add `.env.local`, and `npm run dev`.
+
+---
+*Built for excellence by VedaAI Team.*
